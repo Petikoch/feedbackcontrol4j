@@ -115,14 +115,6 @@ def pomConfig = {
             name 'John Doe'
         }
     }*/
-
-    licenses {
-        license {
-            name 'The Apache Software License, Version 2.0'
-            url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-            distribution 'repo'
-        }
-    }
 }
 
 publishing {
@@ -134,7 +126,14 @@ publishing {
             from components.java
 
             pom.withXml {
+
                 asNode().children().last() + pomConfig
+
+                def licencesNode = asNode().appendNode('licenses')
+                def licenseNode = licencesNode.appendNode('license')
+                licenseNode.appendNode('name', 'The Apache Software License, Version 2.0')
+                licenseNode.appendNode('url', 'http://www.apache.org/licenses/LICENSE-2.0.txt')
+                licenseNode.appendNode('distribution', 'repo')
 
                 // hack... build up the test dependencies ourselve
                 // why? because maven-publish plugin creates crapy dependencies in pom.xml (gradle 2.2)

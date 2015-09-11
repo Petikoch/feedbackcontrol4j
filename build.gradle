@@ -12,9 +12,9 @@ apply plugin: 'maven-publish'
 apply plugin: 'jacoco'
 
 ext.artifactGroupId = 'ch.petikoch.libs'
-ext.description = 'A little java 7+ standalone library to implement feedback control'
+ext.description = 'A small java 7+ standalone library to implement feedback control'
 
-version = '1.0.0-SNAPSHOT'
+version = '1.0.0'
 
 ext.fileEncoding = 'UTF-8'
 
@@ -147,9 +147,6 @@ publishing {
                     dependencyNode.appendNode('artifactId', it.name)
                     dependencyNode.appendNode('version', it.version)
                     dependencyNode.appendNode('scope', 'test')
-                    if (it.name == 'groovy-all') {
-                        dependencyNode.appendNode('classifier', 'indy')
-                    }
                 }
             }
 

@@ -23,7 +23,7 @@ Using this library, you can implement your own feedback loops on the JVM.
 
 === Examples
 
-See link:src/test/groovy/ch/petikoch/libs/feedbackcontrol4j/EventBasedFeedbackControlLoopTest.groovy[executable documentation in src/test/groovy] for
+See link:src/test/groovy/ch/petikoch/libs/feedbackcontrol4j/control/EventBasedFeedbackControlLoopTest.groovy[executable documentation in src/test/groovy] for
 this and more examples.
 
 == Requirements
@@ -31,7 +31,6 @@ this and more examples.
 To use this library you need
 
 * Java 7 or later
-* no other libs
 
 == Installation
 
@@ -48,7 +47,7 @@ repositories {
 }
 
 dependencies {
-    compile 'ch.petikoch.libs:feedbackcontrol4j:0.1.0' // or whatever explicit version
+    compile 'ch.petikoch.libs:feedbackcontrol4j:1.0.0' // or whatever explicit version
 
     // or "latest", for the braves:
     //compile 'ch.petikoch.libs:feedbackcontrol4j:+'

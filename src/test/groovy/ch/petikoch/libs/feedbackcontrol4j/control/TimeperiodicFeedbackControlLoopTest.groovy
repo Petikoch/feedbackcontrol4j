@@ -19,7 +19,6 @@ import ch.petikoch.libs.feedbackcontrol4j.controllable.Controllable
 import ch.petikoch.libs.feedbackcontrol4j.controller.PlusMinusOneController
 import ch.petikoch.libs.feedbackcontrol4j.datatypes.Percentage
 import ch.petikoch.libs.feedbackcontrol4j.sensor.Sensor
-import ch.petikoch.libs.feedbackcontrol4j.util.ThreadSafe
 import spock.lang.Specification
 import spock.util.concurrent.PollingConditions
 

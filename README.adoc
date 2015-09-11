@@ -15,12 +15,10 @@ image:http://img.shields.io/coveralls/{github-user}/{project-name}.svg["Coverage
 
 *feedbackcontrol4j* is a small, standalone java library.
 
-This library implements some of the concepts of the book
+It can be used to implement feedback control control loops in applications. Main entities are Controller, Controllable, Sensor, Filter, ControlLoop, ...
+
+For further reading I can recommend
 http://shop.oreilly.com/product/0636920028970.do[*Feeback Control for computer Systems*] from Philipp K. Janert.
-
-image::book.gif[]
-
-Using this library, you can implement your own feedback loops on the JVM.
 
 === Examples
 

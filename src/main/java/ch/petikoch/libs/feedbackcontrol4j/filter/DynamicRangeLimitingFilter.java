@@ -16,10 +16,12 @@
 package ch.petikoch.libs.feedbackcontrol4j.filter;
 
 import ch.petikoch.libs.feedbackcontrol4j.datatypes.Pair;
+import ch.petikoch.libs.feedbackcontrol4j.util.ThreadSafe;
 
 /**
  * Keeps a signal in certain "dynamically calculated" range.
  */
+@ThreadSafe // if the RangeCalculator is
 public class DynamicRangeLimitingFilter implements Filter<Integer> {
 
     private final RangeCalculator rangeCalculator;

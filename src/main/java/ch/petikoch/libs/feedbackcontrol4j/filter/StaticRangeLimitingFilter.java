@@ -15,6 +15,8 @@
  */
 package ch.petikoch.libs.feedbackcontrol4j.filter;
 
+import ch.petikoch.libs.feedbackcontrol4j.util.ThreadSafe;
+
 /**
  * Keeps a signal in certain static range. The range can be modified at runtime through {@link #setRange(int, int)}.
  */

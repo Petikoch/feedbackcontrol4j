@@ -1,0 +1,111 @@
+= feedbackcontrol4j Java library
+Peti Koch
+:imagesdir: ./docs
+:project-name: feedbackcontrol4j
+:github-branch: master
+:github-user: Petikoch
+:bintray-user: petikoch
+
+image:http://img.shields.io/badge/license-ASF2-blue.svg["Apache License 2", link="http://www.apache.org/licenses/LICENSE-2.0.txt"]
+image:http://img.shields.io/badge/download-latest-bb00bb.svg[link="https://bintray.com/{bintray-user}/maven/{project-name}/_latestVersion"]
+image:https://travis-ci.org/{github-user}/{project-name}.svg?branch={github-branch}["Build Status", link="https://travis-ci.org/{github-user}/{project-name}"]
+
+== Introduction
+
+*feedbackcontrol4j* is a small, standalone java library.
+
+This library implements some of the concepts of the book
+http://shop.oreilly.com/product/0636920028970.do[*Feeback Control for computer Systems*] from Philipp K. Janert.
+
+image::book.gif[]
+
+Using this library, you can implement your own feedback loops on the JVM.
+
+=== Examples
+
+See link:src/test/groovy/ch/petikoch/libs/feedbackcontrol4j/EventBasedFeedbackControlLoopTest.groovy[executable documentation in src/test/groovy] for
+this and more examples.
+
+== Requirements
+
+To use this library you need
+
+* Java 7 or later
+* no other libs
+
+== Installation
+
+=== Usage in Gradle, Maven, ...
+
+==== Gradle based build
+
+Add the following dependency in your gradle build file:
+
+[source,groovy]
+----
+repositories {
+   jcenter() // Bintray's JCenter repository
+}
+
+dependencies {
+    compile 'ch.petikoch.libs:feedbackcontrol4j:0.1.0' // or whatever explicit version
+
+    // or "latest", for the braves:
+    //compile 'ch.petikoch.libs:feedbackcontrol4j:+'
+}
+----
+
+==== Maven based build
+
+Add jtwfg as dependency to your pom.xml:
+
+[source,xml]
+----
+        <dependency>
+            <groupId>ch.petikoch.libs</groupId>
+            <artifactId>feedbackcontrol4j</artifactId>
+            <version>0.1.0</version> <!-- or whatever version -->
+            <!-- or latest release (not snapshot), for the braves
+            <version>RELEASE</version>
+            -->
+        </dependency>
+----
+
+Be sure to have Bintray's JCenter repository in your maven settings.xml. If not, see "Set me up!" on the
+https://bintray.com/bintray/jcenter page for instructions to set it up.
+
+==== Just the jar
+
+image:http://img.shields.io/badge/download-latest-bb00bb.svg[link="https://bintray.com/{bintray-user}/maven/{project-name}/_latestVersion"] The jar of the latest version
+
+== Release notes
+
+See https://github.com/Petikoch/feedbackcontrol4j/releases.
+
+== Support
+
+Please use GitHub issues and pull requests for support.
+
+== How to build the project
+
+To run a build of the feedbackcontrol4j project on your machine, clone the git repo to your local machine and start the gradle based build using
+gradle's http://gradleware.com/registered-access?content=screencasts%2Fthe-gradle-wrapper%2F[gradlewrapper] from the shell/command line:
+
+[source]
+----
+> ./gradlew build
+----
+
+
+== Motivation
+
+Feedback control is IMO in "enterprise" software development still pretty new (2015), but very promising.
+
+I didn't find any "ready-to-go" library for the JVM to implement custom feedback control closed loops,
+so I started with this work here.
+
+
+
+Best regards,
+
+image::Signature.jpg[]

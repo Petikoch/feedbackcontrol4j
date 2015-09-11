@@ -15,7 +15,10 @@
  */
 package ch.petikoch.libs.feedbackcontrol4j.sensor;
 
+import ch.petikoch.libs.feedbackcontrol4j.util.Nullable;
+
 public interface Sensor<T> {
 
+    @Nullable
     T currentValue();
 }

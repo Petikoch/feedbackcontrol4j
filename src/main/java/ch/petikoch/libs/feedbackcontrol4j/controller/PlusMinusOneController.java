@@ -18,28 +18,16 @@ package ch.petikoch.libs.feedbackcontrol4j.controller;
 import ch.petikoch.libs.feedbackcontrol4j.datatypes.Percentage;
 import ch.petikoch.libs.feedbackcontrol4j.sensor.Sensor;
 
-import java.util.concurrent.atomic.AtomicReference;
+public class PlusMinusOneController extends AbstractPercentageSensorController<Integer, Integer> {
 
-public class PlusMinusOneController implements Controller<Percentage, Integer, Integer> {
-
-    private final AtomicReference<Percentage> setpointRef = new AtomicReference<>();
-    private final Sensor<Percentage> sensor;
-
-    public PlusMinusOneController(Percentage initialSetpoint,
-                                  Sensor<Percentage> sensor) {
-        this.sensor = sensor;
-        setpoint(initialSetpoint);
-    }
-
-    @Override
-    public void setpoint(final Percentage newSetpoint) {
-        setpointRef.set(newSetpoint);
+    public PlusMinusOneController(Percentage initialSetpoint, Sensor<Percentage> sensor) {
+        super(initialSetpoint, sensor);
     }
 
     @Override
     public Integer calculateNewControllableValue(Integer controllableCurrentValue) {
-        Percentage currentSetpoint = setpointRef.get();
-        Percentage currentSensorValue = sensor.currentValue();
+        Percentage currentSetpoint = getSetpoint();
+        Percentage currentSensorValue = getCurrentSensorValue();
         if (currentSensorValue != null) {
             int compareToResult = currentSensorValue.compareTo(currentSetpoint);
             int result;

@@ -34,30 +34,29 @@ import java.util.logging.Logger;
  * An implementation of a feedback control closed loop with time periodic control.
  *
  * @param <S> type of setpoint
- * @param <I> type of input value
- * @param <O> type of output value
+ * @param <V> type of controllable value
  */
-public class TimeperiodicFeedbackControlLoop<S, I, O> extends EventBasedFeedbackControlLoop<S, I, O> implements ITimeperiodicFeedbackControlLoop {
+public class TimeperiodicFeedbackControlLoop<S, V> extends EventBasedFeedbackControlLoop<S, V> implements ITimeperiodicFeedbackControlLoop {
 
     private final Logger logger = Logger.getLogger(TimeperiodicFeedbackControlLoop.class.getName());
 
     private final ScheduledExecutorService scheduledExecutorService = createScheduledExecutorService();
     private final AtomicReference<ScheduledFuture<?>> lastFutureRef = new AtomicReference<>();
 
-    public TimeperiodicFeedbackControlLoop(final Controller<S, I, O> controller,
-                                           final Controllable<I, O> controllable) {
+    public TimeperiodicFeedbackControlLoop(final Controller<S, V> controller,
+                                           final Controllable<V> controllable) {
         super(controller, controllable);
     }
 
-    public TimeperiodicFeedbackControlLoop(final Controller<S, I, O> controller,
-                                           final Filter<O> controllerOutputFilter,
-                                           final Controllable<I, O> controllable) {
+    public TimeperiodicFeedbackControlLoop(final Controller<S, V> controller,
+                                           final Filter<V> controllerOutputFilter,
+                                           final Controllable<V> controllable) {
         super(controller, controllerOutputFilter, controllable);
     }
 
-    public TimeperiodicFeedbackControlLoop(final Controller<S, I, O> controller,
-                                           final List<Filter<O>> controllerOutputFilters,
-                                           final Controllable<I, O> controllable) {
+    public TimeperiodicFeedbackControlLoop(final Controller<S, V> controller,
+                                           final List<Filter<V>> controllerOutputFilters,
+                                           final Controllable<V> controllable) {
         super(controller, controllerOutputFilters, controllable);
     }
 

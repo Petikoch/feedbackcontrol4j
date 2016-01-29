@@ -18,38 +18,38 @@ package ch.petikoch.libs.feedbackcontrol4j.controller;
 import ch.petikoch.libs.feedbackcontrol4j.datatypes.Percentage;
 import ch.petikoch.libs.feedbackcontrol4j.sensor.Sensor;
 
-public class PlusMinusOneController extends AbstractPercentageSensorController<Integer, Integer> {
+public class PlusMinusOneController extends AbstractPercentageSensorController<Integer> {
 
     public PlusMinusOneController(Percentage initialSetpoint, Sensor<Percentage> sensor) {
         super(initialSetpoint, sensor);
     }
 
     @Override
-    public Integer calculateNewControllableValue(Integer controllableCurrentValue) {
+    public Integer calculateNewControllableValue(Integer controllableActualValue) {
         Percentage currentSetpoint = getSetpoint();
         Percentage currentSensorValue = getCurrentSensorValue();
         if (currentSensorValue != null) {
             int compareToResult = currentSensorValue.compareTo(currentSetpoint);
             int result;
             if (compareToResult < 0) {
-                result = controllableCurrentValue + 1;
+                result = controllableActualValue + 1;
             } else if (compareToResult == 0) {
-                if ((controllableCurrentValue > 0) &&
+                if ((controllableActualValue > 0) &&
                         (currentSetpoint.equals(Percentage.MIN_VALUE) || currentSetpoint.equals(Percentage.MAX_VALUE))) {
                     // Corner case: try to reduce, always.
-                    result = controllableCurrentValue - 1;
+                    result = controllableActualValue - 1;
                 } else {
                     // don't change
-                    result = controllableCurrentValue;
+                    result = controllableActualValue;
                 }
             } else if (compareToResult > 0) {
-                result = controllableCurrentValue - 1;
+                result = controllableActualValue - 1;
             } else {
                 throw new IllegalStateException("Unhandled case: " + compareToResult);
             }
             return result;
         } else {
-            return controllableCurrentValue;
+            return controllableActualValue;
         }
     }
 }

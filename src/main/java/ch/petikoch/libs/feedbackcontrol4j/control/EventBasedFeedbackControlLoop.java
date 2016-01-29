@@ -27,33 +27,32 @@ import java.util.Collections;
  * An implementation of a feedback control closed loop. The controlling is triggered through the {@link #doControl()} method call.
  *
  * @param <S> type of setpoint
- * @param <I> type of input value
- * @param <O> type of output value
+ * @param <V> type of controllable value
  */
-public class EventBasedFeedbackControlLoop<S, I, O> implements IEventBasedFeedbackControlLoop {
+public class EventBasedFeedbackControlLoop<S, V> implements IEventBasedFeedbackControlLoop {
 
-    private final Controller<S, I, O> controller;
-    private final Iterable<Filter<O>> controllerOutputFilters;
-    private final Controllable<I, O> controllable;
+    private final Controller<S, V> controller;
+    private final Iterable<Filter<V>> controllerOutputFilters;
+    private final Controllable<V> controllable;
 
-    public EventBasedFeedbackControlLoop(final Controller<S, I, O> controller,
-                                         final Controllable<I, O> controllable) {
-        this(controller, (Filter<O>) null, controllable);
+    public EventBasedFeedbackControlLoop(final Controller<S, V> controller,
+                                         final Controllable<V> controllable) {
+        this(controller, (Filter<V>) null, controllable);
     }
 
-    public EventBasedFeedbackControlLoop(final Controller<S, I, O> controller,
+    public EventBasedFeedbackControlLoop(final Controller<S, V> controller,
                                          @Nullable
-                                         final Filter<O> controllerOutputFilter,
-                                         final Controllable<I, O> controllable) {
+                                         final Filter<V> controllerOutputFilter,
+                                         final Controllable<V> controllable) {
         this(controller,
-                controllerOutputFilter != null ? Arrays.asList(controllerOutputFilter) : Collections.<Filter<O>>emptyList(),
+                controllerOutputFilter != null ? Arrays.asList(controllerOutputFilter) : Collections.<Filter<V>>emptyList(),
                 controllable);
     }
 
-    public EventBasedFeedbackControlLoop(final Controller<S, I, O> controller,
+    public EventBasedFeedbackControlLoop(final Controller<S, V> controller,
                                          @Nullable
-                                         final Iterable<Filter<O>> controllerOutputFilters,
-                                         final Controllable<I, O> controllable) {
+                                         final Iterable<Filter<V>> controllerOutputFilters,
+                                         final Controllable<V> controllable) {
         this.controller = controller;
         if (controllerOutputFilters != null) {
             this.controllerOutputFilters = controllerOutputFilters;
@@ -65,11 +64,11 @@ public class EventBasedFeedbackControlLoop<S, I, O> implements IEventBasedFeedba
 
     @Override
     public void doControl() {
-        final I controllerInput = controllable.getControllerInput();
+        final V controllerInput = controllable.getActualValue();
         if (controllerInput != null) {
-            O controllerOutput = controller.calculateNewControllableValue(controllerInput);
-            O filteredControllerOutput = controllerOutput;
-            for (Filter<O> filter : controllerOutputFilters) {
+            V controllerOutput = controller.calculateNewControllableValue(controllerInput);
+            V filteredControllerOutput = controllerOutput;
+            for (Filter<V> filter : controllerOutputFilters) {
                 filteredControllerOutput = filter.filter(filteredControllerOutput);
             }
             controllable.applyControllerOutput(filteredControllerOutput);

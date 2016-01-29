@@ -19,12 +19,11 @@ package ch.petikoch.libs.feedbackcontrol4j.controller;
  * The controller.
  *
  * @param <S> type of setpoint
- * @param <I> type of input value
- * @param <O> type of output value
+ * @param <V> type of the controllable value
  */
-public interface Controller<S, I, O> {
+public interface Controller<S, V> {
 
-    void setpoint(S newSetpoint);
+    void setSetpoint(S newSetpoint);
 
-    O calculateNewControllableValue(I controllableCurrentValue);
+    V calculateNewControllableValue(V controllableActualValue);
 }

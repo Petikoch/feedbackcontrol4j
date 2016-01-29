@@ -24,7 +24,7 @@ import ch.petikoch.libs.feedbackcontrol4j.util.ThreadSafe;
  * An experimental, simple PID controller implementation without concerning time-change.
  */
 @ThreadSafe
-public class SimplePidController extends AbstractPercentageSensorController<Integer, Integer> {
+public class SimplePidController extends AbstractPercentageSensorController<Integer> {
 
     private final int kp, ki, kd;
     private int i, d, prev;
@@ -55,7 +55,7 @@ public class SimplePidController extends AbstractPercentageSensorController<Inte
     }
 
     @Override
-    public Integer calculateNewControllableValue(Integer controllableCurrentValue) {
+    public Integer calculateNewControllableValue(Integer controllableActualValue) {
         Percentage currentSetpoint = getSetpoint();
         Percentage currentSensorValue = getCurrentSensorValue();
         if (currentSensorValue != null) {
@@ -66,9 +66,9 @@ public class SimplePidController extends AbstractPercentageSensorController<Inte
                 prev = e;
             }
 
-            return controllableCurrentValue + ((kp * e) + (ki * i) + (kd * d));
+            return controllableActualValue + ((kp * e) + (ki * i) + (kd * d));
         } else {
-            return controllableCurrentValue;
+            return controllableActualValue;
         }
     }
 }

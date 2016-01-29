@@ -61,19 +61,19 @@ class TimeperiodicFeedbackControlLoopTest extends Specification {
     }
 
     @ThreadSafe
-    static class Cache implements Controllable<Integer, Integer> {
+    static class Cache implements Controllable<Integer> {
 
         final AtomicInteger cacheSize = new AtomicInteger()
 
         @Override
-        Integer getControllerInput() {
+        Integer getActualValue() {
             return cacheSize.get()
         }
 
         @Override
-        void applyControllerOutput(Integer controllerOutput) {
-            this.cacheSize.set(controllerOutput)
-            println 'new cache size: ' + controllerOutput
+        void applyControllerOutput(Integer newValue) {
+            this.cacheSize.set(newValue)
+            println 'new cache size: ' + newValue
         }
     }
 

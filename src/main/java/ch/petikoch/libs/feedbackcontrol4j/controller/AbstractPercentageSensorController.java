@@ -22,7 +22,7 @@ import ch.petikoch.libs.feedbackcontrol4j.util.Preconditions;
 
 import java.util.concurrent.atomic.AtomicReference;
 
-public abstract class AbstractPercentageSensorController<I, O> implements Controller<Percentage, I, O> {
+public abstract class AbstractPercentageSensorController<V> implements Controller<Percentage, V> {
 
     private final AtomicReference<Percentage> setpointRef = new AtomicReference<>();
     private final Sensor<Percentage> sensor;
@@ -30,11 +30,11 @@ public abstract class AbstractPercentageSensorController<I, O> implements Contro
     public AbstractPercentageSensorController(Percentage initialSetpoint,
                                               Sensor<Percentage> sensor) {
         this.sensor = sensor;
-        setpoint(initialSetpoint);
+        setSetpoint(initialSetpoint);
     }
 
     @Override
-    public final void setpoint(final Percentage newSetpoint) {
+    public final void setSetpoint(final Percentage newSetpoint) {
         Preconditions.checkNotNull(newSetpoint);
         setpointRef.set(newSetpoint);
     }

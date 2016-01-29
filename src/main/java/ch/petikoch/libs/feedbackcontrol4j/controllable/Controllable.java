@@ -18,12 +18,11 @@ package ch.petikoch.libs.feedbackcontrol4j.controllable;
 /**
  * The controllable.
  *
- * @param <I> type of the input for the controller
- * @param <O> type of the output of the controller to apply
+ * @param <V> type of the controllable value
  */
-public interface Controllable<I, O> {
+public interface Controllable<V> {
 
-    I getControllerInput();
+    V getActualValue();
 
-    void applyControllerOutput(O controllerOutput);
+    void applyControllerOutput(V newValue);
 }

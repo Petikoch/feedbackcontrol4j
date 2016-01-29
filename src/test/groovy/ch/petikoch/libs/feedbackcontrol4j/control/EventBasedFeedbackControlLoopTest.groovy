@@ -73,18 +73,18 @@ class EventBasedFeedbackControlLoopTest extends Specification {
         cache.cacheSize == 100
     }
 
-    static class Cache implements Controllable<Integer, Integer> {
+    static class Cache implements Controllable<Integer> {
 
         int cacheSize
 
         @Override
-        Integer getControllerInput() {
+        Integer getActualValue() {
             return cacheSize
         }
 
         @Override
-        void applyControllerOutput(Integer controllerOutput) {
-            this.cacheSize = controllerOutput
+        void applyControllerOutput(Integer newValue) {
+            this.cacheSize = newValue
         }
     }
 

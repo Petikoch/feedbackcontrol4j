@@ -24,6 +24,17 @@ http://shop.oreilly.com/product/0636920028970.do[*Feeback Control for computer S
 
 See link:src/test/groovy/ch/petikoch/libs/feedbackcontrol4j/control[executable documentation in src/test/groovy] for examples.
 
+=== Use cases
+
+* "self adaptive" behaviour of your application instead of "classic", manual configuration
+** number of workers / threads / vm's / ...
+** size of cache
+** number of database connections
+** number of "hot spares"
+* implementing "flow control" between producer and consumer
+* manage CPU load
+* ...
+
 == Requirements
 
 To use this library you need

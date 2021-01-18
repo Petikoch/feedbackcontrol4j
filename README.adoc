@@ -39,7 +39,8 @@ See link:src/test/groovy/ch/petikoch/libs/feedbackcontrol4j/control[executable d
 
 To use this library you need
 
-* Java 7 or later
+* Java 7 or later for feedbackcontrol4j versions 1.x and 2.x
+* Java 8 or later for feedbackcontrol4j version >= 3.x
 
 == Installation
 

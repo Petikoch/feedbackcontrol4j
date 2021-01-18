@@ -1,9 +1,9 @@
 plugins {
-    id "com.jfrog.bintray" version '1.6'          // https://github.com/bintray/gradle-bintray-plugin
-    id 'nu.studer.credentials' version '1.0.3'      // https://github.com/etiennestuder/gradle-credentials-plugin
-    id "com.github.ben-manes.versions" version "0.13.0"
-    id "com.github.hierynomus.license" version "0.11.0"
-    id 'com.github.kt3k.coveralls' version '2.7.1'  // https://github.com/kt3k/coveralls-gradle-plugin
+    id "com.jfrog.bintray" version '1.8.5'          // https://github.com/bintray/gradle-bintray-plugin
+    id 'nu.studer.credentials' version '2.1'      // https://github.com/etiennestuder/gradle-credentials-plugin
+    id "com.github.ben-manes.versions" version "0.36.0"
+    id "com.github.hierynomus.license" version "0.15.0"
+    id 'com.github.kt3k.coveralls' version '2.10.2'  // https://github.com/kt3k/coveralls-gradle-plugin
 }
 
 apply plugin: 'java'
@@ -12,14 +12,14 @@ apply plugin: 'maven-publish'
 apply plugin: 'jacoco'
 
 ext.artifactGroupId = 'ch.petikoch.libs'
-ext.description = 'A small java 7+ standalone library to implement feedback control'
+ext.description = 'A small java 8+ standalone library to implement feedback control'
 
-version = '2.0.2-SNAPSHOT'
+version = '3.0.0-SNAPSHOT'
 
 ext.fileEncoding = 'UTF-8'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     jcenter()
@@ -27,7 +27,7 @@ repositories {
 
 def groovyVersion = '2.4.7'
 def spockVersion = '1.0-groovy-2.4'
-def cglibVersion = '3.2.4'
+def cglibVersion = '3.3.0'
 
 dependencies {
     testCompile "org.codehaus.groovy:groovy-all:${groovyVersion}"

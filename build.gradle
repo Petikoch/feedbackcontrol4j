@@ -7,7 +7,6 @@ plugins {
 }
 
 apply plugin: 'java'
-apply plugin: 'groovy'
 apply plugin: 'maven-publish'
 apply plugin: 'jacoco'
 
@@ -25,16 +24,11 @@ repositories {
     jcenter()
 }
 
-def groovyVersion = '2.4.7'
-def spockVersion = '1.0-groovy-2.4'
-def cglibVersion = '3.3.0'
-
 dependencies {
-    testCompile "org.codehaus.groovy:groovy-all:${groovyVersion}"
-    testCompile("org.spockframework:spock-core:${spockVersion}") {
-        exclude group: 'org.codehaus.groovy'
-    }
-    testCompile "cglib:cglib:${cglibVersion}" // spock mocks
+    testImplementation(platform('org.junit:junit-bom:5.7.0'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+    testImplementation('org.assertj:assertj-core:3.18.1')
+    testImplementation('org.awaitility:awaitility:4.0.3')
 }
 
 jar {
@@ -48,11 +42,6 @@ jar {
     }
 }
 
-sourceSets.main.java.srcDirs = ['src/main/java']
-sourceSets.test.java.srcDirs = []
-sourceSets.main.groovy.srcDirs = []
-sourceSets.test.groovy.srcDirs = ['src/test/groovy']
-
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allSource
@@ -62,17 +51,16 @@ artifacts {
     archives sourcesJar
 }
 
-tasks.withType(GroovyCompile) {
-    groovyOptions.encoding = project.fileEncoding
-    options.encoding = project.fileEncoding
-}
-
 tasks.withType(JavaCompile) {
     options.encoding = project.fileEncoding
 }
 
 test {
     systemProperty 'file.encoding', project.fileEncoding
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
 // http://forums.gradle.org/gradle/topics/set_maxparallelforks_to_number_of_cores_on_the_current_machine
@@ -102,7 +90,7 @@ def pomConfig = {
             id 'petikoch'
             name 'Peti Koch'
             email 'petikoch@gmail.com'
-            url 'https://www.google.com/+PetiKoch'
+            url 'https://twitter.com/petikoch'
         }
     }
 

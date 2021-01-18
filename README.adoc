@@ -15,14 +15,14 @@ image:http://img.shields.io/coveralls/{github-user}/{project-name}.svg["Coverage
 
 *feedbackcontrol4j* is a small, standalone java library.
 
-Implement feedback control in your applications. Main entities are Controller, Controllable, Sensor, Filter, ControlLoop, ...
+Implement feedback control in your applications.Main entities are Controller, Controllable, Sensor, Filter, ControlLoop, ...
 
 For further reading I can recommend
 http://shop.oreilly.com/product/0636920028970.do[*Feeback Control for computer Systems*] from Philipp K. Janert.
 
 === Examples
 
-See link:src/test/groovy/ch/petikoch/libs/feedbackcontrol4j/control[executable documentation in src/test/groovy] for examples.
+See link:src/test/java/ch/petikoch/libs/feedbackcontrol4j/control[executable documentation in src/test/java] for examples.
 
 === Use cases
 

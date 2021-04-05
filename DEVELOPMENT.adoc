@@ -24,6 +24,8 @@ Peti Koch
 ** set the release title with the version from `build.gradle`
 ** use the text from `next_releasenotes_draft.md` for the release description
 ** click "publish release"
-* Set the version in `build.gradle` to the next SNAPSHOT version
-* Clear `next_releasenotes_draft.md`
-* Commit and push
+* In your local IDE
+** Update your local branch (git pull)
+** Set the version in `build.gradle` to the next SNAPSHOT version
+** Clear `next_releasenotes_draft.md`
+** Commit and push

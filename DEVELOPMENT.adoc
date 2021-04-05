@@ -5,10 +5,10 @@ Peti Koch
 == The release process
 
 * Check everything (code, docs, ...) is fine in the repo and ready to release
-* Write the release notes in `next_releasenotes_draft.md`
+* Write/check the release notes in `next_releasenotes_draft.md`
 * Set the version in `build.gradle`
 * Commit and push
-* run gradle task `uploadArchives`
+* run gradle task `uploadArchives` locally
 * Check the newly created staging repo in https://s01.oss.sonatype.org/#stagingRepositories
 ** are the artifacts ok?
 ** is the pom correct?
@@ -16,9 +16,11 @@ Peti Koch
 ** Do `close` the staging respository (takes a couple of seconds, this will check the artifacts)
 ** Do `release` the staging respository
 ** After 10 - 15 minutes the new artifacts should be available on Maven Central
-* Create manually on Github a new release under "releases"
-** use the same version for the git tag as the version in `build.gradle`
+* Create manually in the Github webpage of the repo a new release under "releases" "Draft a new release"
+** set the git tag with the version from `build.gradle`
+** set the release title with the version from `build.gradle`
 ** use the text from `next_releasenotes_draft.md` for the release description
+** click "publish release"
 * Set the version in `build.gradle` to the next SNAPSHOT version
 * Clear `next_releasenotes_draft.md`
 * Commit and push

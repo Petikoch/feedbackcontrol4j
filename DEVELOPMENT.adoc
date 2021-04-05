@@ -15,9 +15,10 @@ Peti Koch
 ** are the artifacts ok?
 ** is the pom correct?
 ** If not, drop the staging repo, fix whatever needs a fix and try again
-** Do `close` the staging respository (takes a couple of seconds, this will check the artifacts)
-** Do `release` the staging respository
-** After 10 - 15 minutes the new artifacts should be available on Maven Central
+** If everything is fine
+*** Do `close` the staging respository (takes a couple of seconds, this will check the artifacts)
+*** Do `release` the staging respository
+*** After 10 - 15 minutes the new artifacts should be available on Maven Central
 * Create manually in the Github webpage a new release under "releases" / "Draft a new release"
 ** set the git tag with the version from `build.gradle`
 ** set the release title with the version from `build.gradle`

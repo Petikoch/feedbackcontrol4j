@@ -4,12 +4,10 @@ Peti Koch
 :project-name: feedbackcontrol4j
 :github-branch: master
 :github-user: Petikoch
-:bintray-user: petikoch
 
 image:http://img.shields.io/badge/license-ASF2-blue.svg["Apache License 2", link="http://www.apache.org/licenses/LICENSE-2.0.txt"]
-image:http://img.shields.io/badge/download-latest-bb00bb.svg[link="https://bintray.com/{bintray-user}/maven/{project-name}/_latestVersion"]
+image:http://img.shields.io/badge/download-latest-bb00bb.svg[link="https://search.maven.org/search?q=g:ch.petikoch.libs%20AND%20a:{project-name}"]
 image:https://travis-ci.org/{github-user}/{project-name}.svg?branch={github-branch}["Build Status", link="https://travis-ci.org/{github-user}/{project-name}"]
-image:http://img.shields.io/coveralls/{github-user}/{project-name}.svg["Coverage Status", link="https://coveralls.io/r/{github-user}/{project-name}"]
 
 == Introduction
 
@@ -39,8 +37,7 @@ See link:src/test/java/ch/petikoch/libs/feedbackcontrol4j/control[executable doc
 
 To use this library you need
 
-* Java 7 or later for feedbackcontrol4j versions 1.x and 2.x
-* Java 8 or later for feedbackcontrol4j version >= 3.x
+* Java 8 or later
 
 == Installation
 
@@ -53,11 +50,11 @@ Add the following dependency in your gradle build file:
 [source,groovy]
 ----
 repositories {
-   jcenter() // Bintray's JCenter repository
+   mavenCentral()
 }
 
 dependencies {
-    compile 'ch.petikoch.libs:feedbackcontrol4j:x.y.z'
+    compile 'ch.petikoch.libs:feedbackcontrol4j:x.y.z' // replace x.y.z with the real version
 
     // or "latest" release, for the braves:
     //compile 'ch.petikoch.libs:feedbackcontrol4j:+'
@@ -73,19 +70,12 @@ Add jtwfg as dependency to your pom.xml:
         <dependency>
             <groupId>ch.petikoch.libs</groupId>
             <artifactId>feedbackcontrol4j</artifactId>
-            <version>x.y.z</version>
+            <version>x.y.z</version> <!-- replace x.y.z with the real version -->
             <!-- or latest release, for the braves
             <version>RELEASE</version>
             -->
         </dependency>
 ----
-
-Be sure to have Bintray's JCenter repository in your maven settings.xml. If not, see "Set me up!" on the
-https://bintray.com/bintray/jcenter page for instructions to set it up.
-
-==== Just the jar
-
-image:http://img.shields.io/badge/download-latest-bb00bb.svg[link="https://bintray.com/{bintray-user}/maven/{project-name}/_latestVersion"] The jar of the latest version
 
 == Release notes
 
@@ -97,23 +87,19 @@ Please use GitHub issues and pull requests for support.
 
 == How to build the project
 
-To run a build of the feedbackcontrol4j project on your machine, clone the git repo to your local machine and start the gradle based build using
-gradle's http://gradleware.com/registered-access?content=screencasts%2Fthe-gradle-wrapper%2F[gradlewrapper] from the shell/command line:
+To run a build of the feedbackcontrol4j project on your machine, clone the git repo to your local machine and start the gradle based build using the gradle wrapper from the shell/command line:
 
 [source]
 ----
 > ./gradlew build
 ----
 
-
 == Motivation
 
-Feedback control is IMO in "enterprise" software development still pretty new (2015), but very promising.
+Feedback control is IMHO in "enterprise" software development still pretty new (2015), but very promising.
 
 I didn't find any "ready-to-go" library for the JVM to implement custom feedback control closed loops,
 so I started with this work here.
-
-
 
 Best regards,
 

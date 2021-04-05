@@ -1,12 +1,10 @@
 language: java
 
 jdk:
-  - openjdk7
-  - oraclejdk7
-  - oraclejdk8
+  - openjdk8
+
+install:
+  - ./gradlew build -x signArchives
 
 env:
-- TERM=dumb
-
-after_success:
-- ./gradlew jacocoTestReport coveralls
+  - TERM=dumb
